@@ -30,3 +30,8 @@
 现象：CubeMX 配置了 DMA，代码里也重写了 HAL_I2C_MemTxCpltCallback 回调，但状态机就是死锁。
 根因分析：在 CubeMX 的 NVIC 设置中，忘记勾选 I2C Event interrupt（I2C 事件中断）。硬件 DMA 干完活后，无法触发中断通知 CPU，导致回调函数成了摆设。
 解决方案：排查 CubeMX 的 NVIC 配置，补齐底层中断使能。
+<img width="1706" height="1279" alt="8fad6e35c4caf537239c4a591923748f" src="https://github.com/user-attachments/assets/930d874e-ebd9-460c-bddf-c2e71d9b773e" />
+
+<img width="1279" height="1706" alt="6d528e3144bbe63e251a5f5e059c9933" src="https://github.com/user-attachments/assets/9c67225d-2c74-4d44-adff-d2a37208aa3a" />
+
+
